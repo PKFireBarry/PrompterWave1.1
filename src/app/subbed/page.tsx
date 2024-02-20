@@ -38,23 +38,20 @@ function Page() {
 
   useEffect(() => {
     if (user) {
-      // Run addUserToDatabase function when user is available
       const userData = {
         name: user.displayName || "Anonymous",
         joinedAt: new Date(),
       };
       addUserToDatabase(userData);
-
-      // 3 second delay before redirecting
+  
       const delay = setTimeout(() => {
-        // Redirect to home page
         setIsLoading(false);
         window.location.assign('/');
       }, 3000);
-
-      return () => clearTimeout(delay); // Clear timeout on unmount
+  
+      return () => clearTimeout(delay);
     }
-  }, [user]); // Run when user changes
+  }, [user, addUserToDatabase]); // Include addUserToDatabase as a dependency 
 
   return (
     <div className='h-full w-full flex items-center'>

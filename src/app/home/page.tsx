@@ -127,7 +127,7 @@ export default function Home() {
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.8 }} className="flex items-start">
           <CheckCircleIcon className="w-8 h-8 mr-4 mt-1 text-[#251982]" />
           <span className="text-sm font-semibold text-[#251982] mr-4">Reliable Results:</span> 
-          <p className="text-sm font-bold">Trust in our app's consistent and reliable performance. Say goodbye to tedious fine-tuning and hello to captivating visuals.</p>
+          <p className="text-sm font-bold">Trust in our app&apos;s consistent and reliable performance. Say goodbye to tedious fine-tuning and hello to captivating visuals.</p>
         </motion.div>
       </div>
     </div>

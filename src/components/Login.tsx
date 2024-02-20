@@ -37,7 +37,7 @@ function login() {
         <div className="space-y-4">
           <Button onClick={ handleLogin} className="w-full hover:scale-105 transition-all">Sign in with Google</Button>
           <div className="text-center text-sm">
-            Don't have an account?
+          Don&apos;t have an account?
             <a className="underline hover:text-blue-500" onClick={ handleLogin}>
               <br/>
                 Sign up
