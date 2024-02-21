@@ -36,8 +36,8 @@ function Page() {
       );
       const docRef = await addDoc(collectionRef, {
         price: "price_1Ok1duLKGV5ROCJ9QmQ0utKU",
-        success_url: "http://localhost:3000/subbed",
-        cancel_url: "http://localhost:3000/home",
+        success_url: "prompter-wave.vercel.app/subbed",
+        cancel_url: "prompter-wave.vercel.app/home",
       });
 
       // Set up a listener for changes to the document
