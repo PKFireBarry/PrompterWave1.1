@@ -72,23 +72,29 @@ function Nav() {
                 To navigate the website efficiently, utilize the navigation menu by clicking on its options located below
                 </HoverCardContent>
               </HoverCard>
-              <ModeToggle/> 
+               {/*<ModeToggle/>*/}
             </SheetTitle>
           </SheetHeader>
           <div className="grid gap-4 py-8">
-            {routes.map((route, index) => (
-              <div className="grid grid-cols-4 items-center gap-4" key={index}>
-                <Label htmlFor={`route-${index}`} className="text-left">
-                  <a href={route.path}>{route.label}</a>
-                </Label>
-              </div>
-            ))}
-          </div>
+  {routes.map((route, index) => (
+    <div
+      className="nav-item grid grid-cols-4 items-center gap-4 transition duration-300 ease-in-out transform hover:scale-105"
+      key={index}
+    >
+      <Label htmlFor={`route-${index}`} className="text-left">
+        <a href={route.path} className="text-black text-xl hover:text-blue-700">
+          {route.label}
+        </a>
+      </Label>
+    </div>
+  ))}
+</div>
+
           {/* Conditionally render login/logout buttons */}
           {user ? (
-            <Button onClick={handleSignOut}>Logout</Button>
+            <Button className="hover:animate-pulse hover:bg-blue-700" onClick={handleSignOut}>Logout</Button>
           ) : (
-            <Button onClick={handleLogin}>Login</Button>
+            <Button className="hover:animate-pulse hover:bg-blue-700" onClick={handleLogin}>Login</Button>
           )}
         </SheetContent>
       </Sheet>

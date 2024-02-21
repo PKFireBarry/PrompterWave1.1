@@ -65,12 +65,16 @@ const [user, loading] = useAuthState(auth);
 
 // loading?
   if  (loading) {
-    return <div className="flex flex-col items-center justify-start h-screen ">
-    <div className="flex items-center justify-center space-x-2">
-      <div className="animate-spin h-5 w-5 border-t-2 rounded-full border-b-2 border-black" />
+    return <div className="flex w-screen h-screen flex-col items-center justify-center">
+    <div className="flex items-center space-x-2">
+      <div className="animate-spin h-5 w-5 border-t-2 rounded-full border-b-2 border-black" >
+        <div className=" h-4 w-full rounded-full bg-gray-200 dark:bg-gray-50 animate-spin" />
+        
+      </div>
+      
     </div>
     <p className="mt-4 text-black text-lg">
-      Hold tight for a sec!
+    Please wait...
     </p>
   </div>;
   }

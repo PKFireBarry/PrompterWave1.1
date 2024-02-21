@@ -76,81 +76,86 @@ function Page() {
         <main className="flex-1 w-full ">
           <About />
           <div className="grid gap-6 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-2 xl:grid-cols-2xl">
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-              <div className="grid m-4 outline rounded-xl">
-                <Card>
-                  <CardHeader className="pb-6">
-                    <CardTitle>Free</CardTitle>
-                    <div>Always free</div>
-                    <CardDescription>
-                      Good for getting started with Stable Diffusion Prompting
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="grid gap-4">
-                    <ul className="grid gap-2">
-                      <li>
-                        <CheckIcon className="w-4 h-4 mr-2 inline-block" />
-                        20 Prompt Generations Per month
-                      </li>
-                      <li>
-                        <CheckIcon className="w-4 h-4 mr-2 inline-block" />
-                        Set custom prompt constants
-                      </li>
-                      <li>
-                        <CheckIcon className="w-4 h-4 mr-2 inline-block" />
-                        Archive access with editing
-                      </li>
-                    </ul>
-                    <div >
-                      <Button
-                        onClick={handleSubscribe as any}
-                        className="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                      >
-                        Sign up for free
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
+          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+  <div className="grid m-4 outline rounded-xl">
+    <Card>
+      <CardHeader className="pb-6">
+        <CardTitle>Free</CardTitle>
+        <div>Always free</div>
+        <CardDescription>
+          Good for getting started with Stable Diffusion Prompting
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <ul className="grid gap-2">
+          <li>
+            <CheckIcon className="w-4 h-4 mr-2 inline-block text-green-500" />
+            20 Prompt Generations Per month
+          </li>
+          <li>
+            <CheckIcon className="w-4 h-4 mr-2 inline-block text-green-500" />
+            GPT-4 based LLM 
+          </li>
+          <li>
+            <CheckIcon className="w-4 h-4 mr-2 inline-block text-green-500" />
+            Archive access
+          </li>
+        </ul>
+        <div>
+          <Button
+            
+            className="button-style bg-gray-900 text-gray-50 hover:bg-gray-800"
+            disabled={loading}
+          >
+            <a
+            href="/"
+            >Sign up for free</a>
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+</motion.div>
 
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
-              <div className="grid m-4 outline rounded-xl">
-                <Card>
-                  <CardHeader className="pb-6">
-                    <CardTitle>Pro</CardTitle>
-                    <div>$3/month</div>
-                    <CardDescription>
-                      For professional developers and teams
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="grid gap-4">
-                    <ul className="grid gap-2">
-                      <li>
-                        <CheckIcon className="w-4 h-4 mr-2 inline-block" />
-                        Unlimited Prompt Generations
-                      </li>
-                      <li>
-                        <CheckIcon className="w-4 h-4 mr-2 inline-block" />
-                        Set custom prompt constants
-                      </li>
-                      <li>
-                        <CheckIcon className="w-4 h-4 mr-2 inline-block" />
-                        Archive access with editing
-                      </li>
-                    </ul>
-                    <div >
-                      <Button
-                        onClick={handleSubscribe as any}
-                        className="inline-flex h-9 items-center justify-center rounded-md bg-gray-900 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                      >
-                        Signup for just $3
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
+<motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }}>
+  <div className="grid m-4 outline rounded-xl">
+    <Card>
+      <CardHeader className="pb-6">
+        <CardTitle>Pro</CardTitle>
+        <div>$3/month</div>
+        <CardDescription>
+          For professional developers and teams
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="grid gap-4">
+        <ul className="grid gap-2">
+          <li>
+            <CheckIcon className="w-4 h-4 mr-2 inline-block text-green-500" />
+            Unlimited Prompt Generations
+          </li>
+          <li>
+            <CheckIcon className="w-4 h-4 mr-2 inline-block text-green-500" />
+            Set custom Constants or Embeddings
+          </li>
+          <li>
+            <CheckIcon className="w-4 h-4 mr-2 inline-block text-green-500" />
+            Archive access with Editing
+          </li>
+        </ul>
+        <div>
+          <Button
+            onClick={(handleSubscribe) as any}
+            className="button-style bg-gray-900 text-gray-50 hover:bg-gray-800"
+            disabled={loading}
+          >
+            Signup for just $3
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  </div>
+</motion.div>
+
             
           </div>
         </main>
