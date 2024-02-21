@@ -220,7 +220,7 @@ function Dashboard() {
             isLoading={isLoading}
             addToPrompt={addToPrompt}
           />
-          <ContentArea response={response as string} />
+          <ContentArea setResponse={setResponse} response={response as string} />
         </div>
       </div>
       <Footer />

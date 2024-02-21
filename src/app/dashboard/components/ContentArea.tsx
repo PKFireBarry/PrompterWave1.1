@@ -2,8 +2,9 @@ import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/h
 import { Textarea } from '@/components/ui/textarea'
 import React from 'react'
 
-function ContentArea({response}:{
+function ContentArea({response, setResponse}:{
   response: string | undefined;
+  setResponse:(value:string)=>void;
 }) {
   return (
     <div className="bg-slate-300 rounded-lg p-2 md:w-[33.3%] w-full outline">
@@ -26,7 +27,7 @@ function ContentArea({response}:{
     <Textarea
       className=" bg-white outline"
       id="textarea"
-      defaultValue={response as string}
+      value={response as string}
       onChange={(e) => response}
       rows={30}
       placeholder="Get ready for an awesome and fully developed idea that's about to make an appearance – I swear! (Response content will show up here....)"
