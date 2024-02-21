@@ -36,8 +36,8 @@ function Page() {
       );
       const docRef = await addDoc(collectionRef, {
         price: "price_1Ok1duLKGV5ROCJ9QmQ0utKU",
-        success_url: "prompter-wave.vercel.app/subbed",
-        cancel_url: "prompter-wave.vercel.app/home",
+        success_url: "https://prompter-wave.vercel.app//subbed",
+        cancel_url: "https://prompter-wave.vercel.app//home",
       });
 
       // Set up a listener for changes to the document
@@ -143,13 +143,21 @@ function Page() {
           </li>
         </ul>
         <div>
-          <Button
-            onClick={(handleSubscribe) as any}
-            className="button-style bg-gray-900 text-gray-50 hover:bg-gray-800"
-            disabled={loading}
-          >
-            Signup for just $3
-          </Button>
+        {user ? ( // Check if user is logged in
+                <Button
+                    onClick={handleSubscribe as any}
+                    className="button-style bg-gray-900 text-gray-50 hover:bg-gray-800"
+                >
+                    Signup for just $3
+                </Button>
+            ) : (
+                <Button
+                    className="button-style bg-gray-900 text-gray-50 cursor-not-allowed"
+                    disabled={true}
+                >
+                    Please log in to subscribe
+                </Button>
+            )}
         </div>
       </CardContent>
     </Card>
