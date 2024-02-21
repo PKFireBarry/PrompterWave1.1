@@ -1,11 +1,12 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { auth, db } from '../../../firebase'; 
+import { auth, db, initFirebase } from '../../../firebase'; 
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 function Page() {
+  initFirebase() // Initialize Firebase (only run once)
   const [user, loading] = useAuthState(auth); // State to manage user authentication
   const [isLoading, setIsLoading] = useState(false); // State to track loading state
 

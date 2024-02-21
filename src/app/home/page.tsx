@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
-import { auth, db } from "../../../firebase";
+import { db, auth, initFirebase } from "../../../firebase";
+
 
 
 import { motion } from "framer-motion";
@@ -17,7 +18,7 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { CheckCircleIcon, CloudIcon, HelpCircleIcon, LockIcon, MergeIcon, SparklesIcon } from "lucide-react";
 
 export default function Home() {
-
+  initFirebase() // Initialize Firebase (only run once)
   const [history, setHistory] = useState<any[]>([]);
   const [user, loading] = useAuthState(auth); 
   const email = user?.email
