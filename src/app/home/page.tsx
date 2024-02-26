@@ -15,12 +15,11 @@ import Footer from "@/components/Footer";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import {
   CheckCircleIcon,
-  CloudIcon,
-  HelpCircleIcon,
-  LockIcon,
   MergeIcon,
   SparklesIcon,
 } from "lucide-react";
+import { Meteors } from "@/components/meteors";
+import { WavyBackground } from "@/components/wavybackground";
 
 export default function Home() {
   initFirebase(); // Initialize Firebase (only run once)
@@ -99,11 +98,15 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex  h-screen flex-col items-center justify-between p-24 bg-[#978eda] dark:bg-gray-800">
+    <main className="flex h-screen w-full  min-h-screen overflow-hidden scroll-py-0 flex-col items-center justify-between p-24 bg-[#978eda] dark:bg-gray-800">
       <Nav />
+      <WavyBackground/>
+      
 
-      <section className="w-full h-screen py-12 md:py-24 lg:py-32 rounded-3xl  ">
-        <div className="grid gap-6 lg:grid-cols-[1fr_500px] lg:gap-12 xl:grid-cols-[1fr_50%]">
+      <section className="w-full h-screen py-12 md:py-24 lg:py-32 rounded-3xl  z-30">
+        <div className="grid gap-6 lg:grid-cols-2 lg:gap-6 ">
+
+
           <div className="flex flex-col rounded-xl outline bg-[#ececf2] items-center justify-center space-y-4">
             <div className="space-y-2 p-4">
               <motion.h1
@@ -213,12 +216,15 @@ export default function Home() {
             </motion.div>
           </div>
 
-          <div>
+
+
+
+          <div className="">
             <motion.div
               initial={{ opacity: 0 }}
               transition={{ duration: 3 }} // Adjust duration as needed
               animate={{ opacity: 1 }}
-              className="overflow-y-hidden hidden lg:block overflow-x-hidden outline p-12 rounded-xl h-[650px] items-center bg-[#090810]"
+              className="overflow-y-hidden hidden lg:block overflow-x-hidden outline p-12 rounded-xl h-[400px] items-center bg-[#978eda]"
             >
               {" "}
               {history && Array.isArray(history) && history.length > 0 ? (
@@ -258,10 +264,13 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+
+       
+
       </section>
       <div className="hidden lg:block">
         <Footer />
-      </div>
+      </div> 
     </main>
   );
 }

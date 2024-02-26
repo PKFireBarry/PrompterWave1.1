@@ -52,7 +52,7 @@ function Nav() {
   };
 
   return (
-    <div className="sticky h-[1px] ml-4 w-full top-4 right-10 flex items-start ">
+    <div className="sticky h-[1px] z-40 ml-4 w-full top-4 right-10 flex items-start ">
       <Sheet>
         <SheetTrigger asChild>
           <Button variant="outline">Menu</Button>

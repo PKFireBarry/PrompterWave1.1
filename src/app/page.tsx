@@ -6,6 +6,7 @@ import {useAuthState} from  "react-firebase-hooks/auth";
 import { addDoc, collection, doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore';
 import Nav from '@/components/Nav';
 import Login from '@/components/Login';
+import { Meteors } from '@/components/meteors';
 
 
 initFirebase();
@@ -66,6 +67,7 @@ const [user, loading] = useAuthState(auth);
 // loading?
   if  (loading) {
     return <div className="flex w-screen h-screen flex-col items-center justify-center">
+      <Meteors/>
     <div className="flex items-center space-x-2">
       <div className="animate-spin h-5 w-5 border-t-2 rounded-full border-b-2 border-black" >
         <div className=" h-4 w-full rounded-full bg-gray-200 dark:bg-gray-50 animate-spin" />

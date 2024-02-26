@@ -6,6 +6,9 @@ import { auth, provider } from '../../firebase';
 import { Button } from './ui/button';
 import Link from 'next/link';
 
+import { WavyBackground } from './wavybackground';
+import { PinContainer } from './3d-pin';
+
 function Login() {
     // Sign in with a popup window
     const handleLogin = async () => {
@@ -18,14 +21,19 @@ function Login() {
     };
 
     return (
-        <main className="">
+        <main className="fixed">
+            
             <Nav />
 
             {/* Login UI */}
-            <section>
-                <div className="flex items-center min-h-screen p-6 sm:p-10  bg-[#978eda]">
+            <section className='flex justify-center w-full items-center min-h-screen overflow-hidden scroll-py-0'>
+                <WavyBackground className=''/>
+                <div className=" p-6  sm:p-10 z-30 items-center justify-center flex w-screen ">
+                <PinContainer
+                className=' w-96'
+        title="Lets Get Started">
+                    <div className="mx-auto w-full  max-w-sm space-y-4 z-30 bg-[#ececf2] rounded-xl outline p-4 overflow-hidden">
 
-                    <div className="mx-auto w-full max-w-sm space-y-4 bg-[#ececf2] rounded-xl outline p-4">
                         <h1 className="text-5xl font-bold pb-8 my-4">
                             {Array.from("PrompterWave").map((letter, index) => (
                                 <motion.span
@@ -54,6 +62,8 @@ function Login() {
                             </div>
                         </div>
                     </div>
+
+                    </PinContainer>
                 </div>
             </section>
 

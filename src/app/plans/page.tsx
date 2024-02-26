@@ -22,6 +22,7 @@ import Team from "./components/Team";
 import About from "./components/About";
 import Footer from "@/components/Footer";
 import { motion } from 'framer-motion';
+import { WavyBackground } from "@/components/wavybackground";
 
 function Page() {
   const [user, loading] = useAuthState(auth);
@@ -65,9 +66,12 @@ function Page() {
   };
 
   return (
-    <div className="">
+    
+    <div className="flex h-screen w-full  min-h-screen overflow-hidden scroll-py-0 flex-col items-center justify-between  bg-[#978eda] dark:bg-gray-800">
+      <WavyBackground/>
       <Nav />
-      <div className="flex h-screen flex-col justify-center items-center bg-[#978eda]">
+      
+      <div className="flex h-screen flex-col justify-center items-center z-30 w-screen">
         <header className="px-4 lg:px-6 h-14 flex items-center">
           <Link className="flex items-center justify-center" href="#">
             <span className="sr-only">Prompter Wave</span>
