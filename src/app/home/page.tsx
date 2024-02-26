@@ -224,7 +224,7 @@ export default function Home() {
               initial={{ opacity: 0 }}
               transition={{ duration: 3 }} // Adjust duration as needed
               animate={{ opacity: 1 }}
-              className="overflow-y-hidden hidden lg:block overflow-x-hidden outline p-12 rounded-xl h-[400px] items-center bg-[#978eda]"
+              className="overflow-y-hidden hidden lg:block overflow-x-hidden outline p-12 rounded-xl h-[600px] items-center bg-[#978eda]"
             >
               {" "}
               {history && Array.isArray(history) && history.length > 0 ? (

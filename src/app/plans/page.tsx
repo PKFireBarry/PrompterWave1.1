@@ -126,7 +126,7 @@ function Page() {
     <Card>
       <CardHeader className="pb-6">
         <CardTitle>Pro</CardTitle>
-        <div>$3/month</div>
+        <div>$1/month</div>
         <CardDescription>
           For professional developers and teams
         </CardDescription>
@@ -152,7 +152,7 @@ function Page() {
                     onClick={handleSubscribe as any}
                     className="button-style bg-gray-900 text-gray-50 hover:bg-gray-800"
                 >
-                    Signup for just $3
+                    Signup for just $1
                 </Button>
             ) : (
                 <Button
