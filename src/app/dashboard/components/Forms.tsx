@@ -3,11 +3,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/component
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card'
 import { motion } from 'framer-motion'
 import React from 'react'
+import { auth, db } from "../../../../firebase";
+import { collection, doc, setDoc } from "firebase/firestore";
 
 
 
 
-function Forms({ response, handleSubmit, setPrompt, setConstants, setNconstants, isLoading, prompt, addToPrompt }: { 
+function Forms({ response, handleSubmit, setPrompt, setConstants, setNconstants, isLoading, prompt, addToPrompt, user }: { 
   response: string, 
   handleSubmit: Function, // Adjust the type accordingly
   setPrompt: Function, // Adjust the type accordingly
@@ -15,9 +17,19 @@ function Forms({ response, handleSubmit, setPrompt, setConstants, setNconstants,
   setNconstants: Function, // Adjust the type accordingly
   isLoading: boolean, 
   prompt: string, 
-  addToPrompt: Function // Adjust the type accordingly
+  addToPrompt: Function, // Adjust the type accordingly
+  user: any
 }) {
 
+
+  const isSubscribed = () => {
+    // check the database to see if the user that is logged in is subscribed
+    // the location in the database is /subscribers
+    
+    return (<>
+    
+    </>)
+  }
 
   return (
     <form

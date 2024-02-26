@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "PrompterWave",
-  description: "A Web App by Darion George",
+  description: "A Web App by Darion",
 };
 
 export default function RootLayout({

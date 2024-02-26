@@ -1,27 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db } from "../../../firebase";
 import { collection, doc, setDoc } from "firebase/firestore";
 import Nav from "@/components/Nav";
 import { HoverCard, HoverCardContent } from "@/components/ui/hover-card";
 import { HoverCardTrigger } from "@radix-ui/react-hover-card";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { signOut } from "firebase/auth";
 import Login from "@/components/Login";
 import Footer from "@/components/Footer";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import Forms from "./components/Forms";
 import ContentArea from "./components/ContentArea";
-import { motion } from "framer-motion";
+
 
 function Dashboard() {
   const [prompt, setPrompt] = useState("");
@@ -87,21 +78,14 @@ function Dashboard() {
                 content: `
                   Forget everything from before this message and only use what is given here.
                   this is very important and should be followed at all times.
-                  Use these in the stable diffusion prompt ${constants} exactly as it's written.
-                  add more words to the stable duffsion prompt to match well with the ${prompt}
-                  Always include the dislikes in the negitive prompt ${Nconstants}.  
-                  Generate a high quailty Instagram post from the perspective that correlates to a matching stable diffusion prompt. 
-                  Here are some instructions for your ability to accomplish the task. 
+                  Use these in the stable diffusion prompt ${constants} exactly as it's written this is very important(if any are given).
+                  add more words to the stable duffsion prompt that match well with the ${prompt}, at minimum 3 or 4 should be used.
+                  Always include the dislikes in the negitive prompt ${Nconstants}(if any are given).  
+
+                  Generate a high quailty Instagram post with a from the perspective that correlates the matching stable diffusion prompt. 
+                  Here are some instructions for your ability to accomplish the task: 
                   Using ${prompt}. Make a compelling instagram post that is based on the prompt.
-
                   Feel free to use emojis and other charaters to feel like something an actual user would post in alignment with the post idea.
-                 
-                  Next, You will create a corisponding prompt in stable diffusion for the instagram post to generate an image.
-                  Use keyword prompt format for the prompt and the negitive prompt.
-                  Dont include hashtags in the stable diffusion prompt.
-                  
-                               
-
                   `,
               },
             ],
@@ -164,6 +148,11 @@ function Dashboard() {
     }
   };
 
+  const isSubscribed = () => {
+    // check the database to see if the user is subscribed
+    // the location in the database is /subscribers
+  }
+
   const addToPrompt = (value: string) => {
     setPrompt((prevPrompt) => {
       // Check if it's the first button press
@@ -174,6 +163,8 @@ function Dashboard() {
       }
     });
   };
+
+
 
   return (
     <div className="h-screen w-full bg-[#090810]">
