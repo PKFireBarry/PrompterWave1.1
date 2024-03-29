@@ -209,8 +209,7 @@ function Dashboard() {
             setConstants={setConstants}
             setNconstants={setNconstants}
             isLoading={isLoading}
-            addToPrompt={addToPrompt}
-          />
+            addToPrompt={addToPrompt}         />
           <ContentArea setResponse={setResponse} response={response as string} />
         </div>
       </div>
