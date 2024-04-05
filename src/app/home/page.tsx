@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import Link from "next/link";
 
-import { addDoc, collection, getDocs, onSnapshot } from "firebase/firestore";
+import { collection, getDocs, onSnapshot } from "firebase/firestore";
 import { db, auth, initFirebase } from "../../../firebase";
 
 import { motion } from "framer-motion";
@@ -13,12 +13,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Footer from "@/components/Footer";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import {
-  CheckCircleIcon,
-  MergeIcon,
-  SparklesIcon,
-} from "lucide-react";
-import { Meteors } from "@/components/meteors";
+import { CheckCircleIcon, MergeIcon, SparklesIcon } from "lucide-react";
+
 import { WavyBackground } from "@/components/wavybackground";
 
 export default function Home() {
@@ -100,13 +96,10 @@ export default function Home() {
   return (
     <main className="flex h-screen w-full  min-h-screen overflow-hidden scroll-py-0 flex-col items-center justify-between p-24 bg-[#978eda] dark:bg-gray-800">
       <Nav />
-      <WavyBackground/>
-      
+      <WavyBackground />
 
       <section className="w-full h-screen py-12 md:py-24 lg:py-32 rounded-3xl  z-30">
         <div className="grid gap-6 lg:grid-cols-2 lg:gap-6 ">
-
-
           <div className="flex flex-col rounded-xl outline bg-[#ececf2] items-center justify-center space-y-4">
             <div className="space-y-2 p-4">
               <motion.h1
@@ -118,18 +111,25 @@ export default function Home() {
                 Introducing
               </motion.h1>
               <h1 className="text-6xl font-bold pb-4 my-4 ">
-                            {Array.from("PrompterWave").map((letter, index) => (
-                                <motion.span
-                                    key={index}
-                                    style={{ display: 'inline-block' }}
-                                    initial={{ y: 0 }}
-                                    className=''
-                                    animate={{ y: [0, -10, 0], transition: { duration: 2.5, repeat: Infinity, delay: index * 0.1 } }}
-                                >
-                                    {letter}
-                                </motion.span>
-                            ))}
-                        </h1>
+                {Array.from("PrompterWave").map((letter, index) => (
+                  <motion.span
+                    key={index}
+                    style={{ display: "inline-block" }}
+                    initial={{ y: 0 }}
+                    className=""
+                    animate={{
+                      y: [0, -10, 0],
+                      transition: {
+                        duration: 2.5,
+                        repeat: Infinity,
+                        delay: index * 0.1,
+                      },
+                    }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+              </h1>
               <div className="max-w-[600px] p-4 md:text-xl dark:text-gray-400">
                 <motion.div
                   initial={{ opacity: 0, y: -20 }}
@@ -188,14 +188,14 @@ export default function Home() {
             >
               {user ? (
                 <Button
-                className="inline-flex text-lg hover:underline h-10 items-center justify-center rounded-md border border-gray-300 transition-colors hover:animate-pulse hover:bg-blue-700 px-8  font-medium shadow-sm   focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
+                  className="inline-flex text-lg hover:underline h-10 items-center justify-center rounded-md border border-gray-300 transition-colors hover:animate-pulse hover:bg-blue-700 px-8  font-medium shadow-sm   focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
                   onClick={handleSignOut}
                 >
                   Logout
                 </Button>
               ) : (
                 <Button
-                className="inline-flex text-lg hover:underline h-10 items-center justify-center rounded-md border border-gray-300 transition-colors hover:animate-pulse hover:bg-blue-700 px-8  font-medium shadow-sm   focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
+                  className="inline-flex text-lg hover:underline h-10 items-center justify-center rounded-md border border-gray-300 transition-colors hover:animate-pulse hover:bg-blue-700 px-8  font-medium shadow-sm   focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
                   onClick={handleLogin}
                 >
                   Login
@@ -215,9 +215,6 @@ export default function Home() {
               </Link>
             </motion.div>
           </div>
-
-
-
 
           <div className="">
             <motion.div
@@ -264,13 +261,10 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
-
-       
-
       </section>
       <div className="hidden lg:block">
         <Footer />
-      </div> 
+      </div>
     </main>
   );
 }

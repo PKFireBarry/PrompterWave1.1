@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/hover-card";
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../../../../firebase";
+import { auth, db, initFirebase } from "../../../../firebase";
 import {
   collection,
   doc,
   getDocs,
+  getFirestore,
+  onSnapshot,
   query,
   setDoc,
   where,
@@ -23,6 +25,9 @@ import {
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Meteors } from "@/components/meteors";
 import { BackgroundGradient } from "@/components/background-gradient";
+import { FirebaseApp } from "firebase/app";
+
+const app = initFirebase();
 
 function Forms({
   response,
@@ -33,6 +38,7 @@ function Forms({
   isLoading,
   prompt,
   addToPrompt,
+  user
 }: {
   response: string;
   handleSubmit: Function; // Adjust the type accordingly
@@ -42,38 +48,62 @@ function Forms({
   isLoading: boolean;
   prompt: string;
   addToPrompt: Function; // Adjust the type accordingly
+  user: any
   
 }) {
-  const [user, loading] = useAuthState(auth);
+
+  const [, loading] = useAuthState(auth);
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const logSubscribersData = async () => {
-    // Create a reference to the subscribers collection
-    const subscribersRef = collection(db, "subscribers");
-    try {
-      // Get all documents within the subscribers collection
-      const querySnapshot = await getDocs(subscribersRef);
-      // Loop through each document
-      for (const doc of querySnapshot.docs) {
-        // Check if the document's ID matches the user's email
-        if (doc.id === user?.email) {
-          // User is in the subscribers list
-          console.log("User is logged as a subscriber");
-          setIsSubscribed(true);
-          return true; // Break out of the loop
-        } else {
-          console.log("This User Isnt A Pro Sub");
-        }
-      }
-    } catch (error) {
-      console.error("Error getting subscribers data: ", error);
-    }
-    // If the loop finishes without finding a match, set isSubscribed to false
-    setIsSubscribed(false);
-    return false;
+  const email = user?.email;
+
+  
+  const subscriptionStatus = async (app: FirebaseApp) => {
+    // Make sure app is defined
+    const user = auth.currentUser;
+    const db = getFirestore(app);
+  
+    if (!app) throw new Error("Firebase app is not defined");
+    if (!user) throw new Error("User not logged in");
+    if (!email) throw new Error("User email not found");
+  
+    const subscriptionRef = doc(db, "subscribers", email);
+    return new Promise<boolean>((resolve, reject) => {
+      const unsubscribe = onSnapshot(
+        subscriptionRef,
+        (snapshot) => {
+          if (snapshot.exists()) {
+            const subscriptionData = snapshot.data();
+            if (subscriptionData && subscriptionData.status === "active") {
+
+              console.log(
+                "Active or trialing subscription found for the current user"
+              );
+              resolve(true);
+              setIsSubscribed(true)
+            } else {
+
+              console.log(
+                "No active or trialing subscription found for the current user"
+              );
+              resolve(false);
+              setIsSubscribed(false)
+            }
+          } else {
+
+            console.log("No email found for the current user");
+            resolve(false);
+            setIsSubscribed(false)
+          }
+          unsubscribe();
+        },
+        reject
+      );
+    });
   };
 
-  // Call the function to log subscribers data
-  logSubscribersData();
+  subscriptionStatus(app);
+  
+
 
   return (
     <form

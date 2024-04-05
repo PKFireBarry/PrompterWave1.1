@@ -4,7 +4,6 @@ import Nav from './Nav';
 import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth, provider } from '../../firebase';
 import { Button } from './ui/button';
-import Link from 'next/link';
 
 import { WavyBackground } from './wavybackground';
 import { PinContainer } from './3d-pin';
@@ -14,7 +13,7 @@ function Login() {
     const handleLogin = async () => {
         try {
             const result = await signInWithPopup(auth, provider); // You need to define 'provider' based on the authentication method you want to use
-            console.log(result) // Once signed in, you can access the user information
+
         } catch (error) {
             console.error(error);
         }
