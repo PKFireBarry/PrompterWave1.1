@@ -148,8 +148,9 @@ function Page() {
                   </div>
                   <div className="bg-gray-300 rounded-md font-light p-4 mb-8">
                   <p>
-                    Click the payments button to be taken to the payment management portal to unlink your payment method if the page doesn't reload automatically. If unsure about if the process to unsubscribe was successful, click the status button to confirm.
-                  </p>                  
+                    Click the payments button to be taken to the payment management portal to unlink your payment method if the page doesn&apos;t reload automatically. If unsure about if the process to unsubscribe was successful, click the status button to confirm.
+                  </p>
+                  
                   </div>
 
                 </div>
